@@ -1,4 +1,6 @@
-﻿namespace Saturn.DAL.DataObjects
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Saturn.DAL.DataObjects
 {
     public class TransactionType
     {

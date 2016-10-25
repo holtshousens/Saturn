@@ -1,0 +1,5 @@
+C:\Users\Sean\Source\Repos\Saturn\Saturn.DAL.DataObjects\obj\Debug\Saturn.DAL.DataObjects.csprojResolveAssemblyReference.cache
+C:\Users\Sean\Source\Repos\Saturn\Saturn.DAL.DataObjects\bin\Debug\Saturn.DAL.DataObjects.dll
+C:\Users\Sean\Source\Repos\Saturn\Saturn.DAL.DataObjects\bin\Debug\Saturn.DAL.DataObjects.pdb
+C:\Users\Sean\Source\Repos\Saturn\Saturn.DAL.DataObjects\obj\Debug\Saturn.DAL.DataObjects.dll
+C:\Users\Sean\Source\Repos\Saturn\Saturn.DAL.DataObjects\obj\Debug\Saturn.DAL.DataObjects.pdb
