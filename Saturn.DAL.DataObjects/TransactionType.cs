@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Saturn.DAL.DataObjects
 {
@@ -12,5 +13,7 @@ namespace Saturn.DAL.DataObjects
         public string TransactionTypeGroup { get; set; }
 
         public string TransactionTypeName { get; set; }
+
+        public IList<Transaction> Transactions { get; set; }
     }
 }

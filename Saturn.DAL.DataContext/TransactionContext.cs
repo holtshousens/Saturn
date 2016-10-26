@@ -6,7 +6,10 @@ namespace Saturn.DAL.DataContext
 {
     public class TransactionContext: DbContext
     {
-        public TransactionContext(string connectionString) :base(connectionString) { }
+        public TransactionContext(string connectionString) :base(connectionString)
+        {
+            Database.SetInitializer<TransactionContext>(new DropCreateDatabaseAlways<TransactionContext>());
+        }
 
         public DbSet<Transaction> Transactions {get; set; }
         public DbSet<Merchant> Merchants { get; set; }
