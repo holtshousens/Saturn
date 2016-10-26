@@ -1,5 +1,4 @@
 C:\Users\Sean\Source\Repos\Saturn\Saturn.DAL.DataContext\obj\Debug\Saturn.DAL.DataContext.csprojResolveAssemblyReference.cache
-C:\Users\Sean\Source\Repos\Saturn\Saturn.DAL.DataContext\bin\Debug\Saturn.DAL.DataContext.dll.config
 C:\Users\Sean\Source\Repos\Saturn\Saturn.DAL.DataContext\bin\Debug\Saturn.DAL.DataContext.dll
 C:\Users\Sean\Source\Repos\Saturn\Saturn.DAL.DataContext\bin\Debug\Saturn.DAL.DataContext.pdb
 C:\Users\Sean\Source\Repos\Saturn\Saturn.DAL.DataContext\bin\Debug\EntityFramework.dll

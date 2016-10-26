@@ -1,20 +1,23 @@
 ﻿using Saturn.DAL.DataContext;
 using Saturn.DAL.DataObjects;
 using System;
+using System.Configuration;
 
 namespace ConsoleApplication
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            string connectionString = ConfigurationManager.ConnectionStrings["TransactionsDB"].ConnectionString;
+
             var merchant = new Merchant
             {
                 MerchantId = 1,
                 MerchantName = "Tesco"
             };
 
-            using (var context = new TransactionContext())
+            using (var context = new TransactionContext(connectionString))
             {
                 context.Database.Log = Console.WriteLine;
                 context.Merchants.Add(merchant);
