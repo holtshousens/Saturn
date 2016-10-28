@@ -12,8 +12,13 @@ namespace Saturn.DAL.DataContext
         }
 
         public DbSet<Transaction> Transactions {get; set; }
+
         public DbSet<Merchant> Merchants { get; set; }
-        public DbSet<TransactionType> TransactionTypes { get; set; }
+
+        public DbSet<TransactionGroup> TransactionTypes { get; set; }
+
         public DbSet<AccountType> AccountTypes { get; set; }
+
+        public DbSet<Card> Cards { get; set; }
     }
 }

@@ -14,7 +14,7 @@ namespace Saturn.DAL.DataObjects
 
         public double TransactionAmount { get; set; }
 
-        public string Memo { get; set; }
+        public string TransactionName { get; set; }
 
         public DateTime TransactionLoadDate { get; set; }
 
