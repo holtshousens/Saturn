@@ -10,15 +10,19 @@ namespace ConsoleApplication
 {
     public class Program
     {
+        private const string _debitCard = "DebitCardSource";
+        private const string _creditCard = "CreditCardSource";
+        private const string _connectionString = "TransactionsDB";
+
         public static string connectionString;
 
         public static void Main(string[] args)
         {
-            connectionString = ConfigurationManager.ConnectionStrings["TransactionsDB"].ConnectionString;
+            connectionString = ConfigurationManager.ConnectionStrings[_connectionString].ConnectionString;
 
-            loadData("DebitCardSource", connectionString);
+            loadData(_debitCard, connectionString);
 
-            loadData("CreditCardSource", connectionString);
+            loadData(_creditCard, connectionString);
 
             Console.ReadKey();
         }
@@ -31,7 +35,7 @@ namespace ConsoleApplication
 
                 context.Database.Log = Console.WriteLine;
 
-                if (sourceTag == "DebitCardSource")
+                if (sourceTag == _debitCard)
                 {
                     string sourcefile = ConfigurationManager.AppSettings[sourceTag];
 
@@ -55,7 +59,7 @@ namespace ConsoleApplication
                         }
                     }
                 }
-                else if (sourceTag == "CreditCardSource")
+                else if (sourceTag == _creditCard)
                 {
                     throw new NotImplementedException();
                 }
