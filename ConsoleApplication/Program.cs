@@ -49,19 +49,51 @@ namespace ConsoleApplication
                             var line = reader.ReadLine();
                             fields = line.Split(',');
 
-                            var merchant = new Merchant
+                            var transaction = new Transaction
                             {
-                                MerchantId = 1,
-                                MerchantName = fields[4]
+                                 TransactionDate = Convert.ToDateTime(fields[1]),
+                                 TransactionAmount = double.Parse(fields[3]),
+                                TransactionName = fields[5]
+                            };
+                            Console.WriteLine(transaction.TransactionDate);
+
+                            //var card = new Card
+                            //{
+
+                            //};
+
+                            var transactionGroup = new TransactionGroup
+                            {
+                                TransactionGroupName = fields[4]
                             };
 
-                            context.Merchants.Add(merchant);
+                            var accountType = new AccountType
+                            {
+                                accountNumber = fields[2]
+                            };
+
+                            //var merchant = new Merchant
+                            //{
+                            //    MerchantId = 1,
+                            //    MerchantName = fields[4]
+                            //};
+
+                            // link foreign keys
+                            //transaction.CardId = card.CardId;
+
+                            // add all to context
+                            context.Transactions.Add(transaction);
+                            //context.Cards.Add(card);
+                            context.TransactionGroups.Add(transactionGroup);
+                            context.AccountTypes.Add(accountType);
+                            //context.Merchants.Add(merchant);
+
                         }
                     }
                 }
                 else if (sourceTag == _creditCard)
                 {
-                    throw new NotImplementedException();
+                    //throw new NotImplementedException();
                 }
                 else
                 {

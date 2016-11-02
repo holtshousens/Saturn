@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Saturn.DAL.DataObjects
 {
@@ -8,10 +9,11 @@ namespace Saturn.DAL.DataObjects
         public Merchant() { }
 
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MerchantId { get; set; }
 
         public string MerchantName { get; set; }
 
-        public IList<Transaction> Transactions { get; set; }
+        public virtual ICollection<Transaction> Transactions { get; set; }
     }
 }

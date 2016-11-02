@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Saturn.DAL.DataObjects
 {
@@ -8,6 +9,7 @@ namespace Saturn.DAL.DataObjects
         public AccountType() { }
 
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int AccountTypeId { get; set; }
 
         public string sortCode { get; set; }
@@ -16,7 +18,7 @@ namespace Saturn.DAL.DataObjects
 
         public string accountType { get; set; }
 
-        public IList<Transaction> Transactions { get; set; }
+        public ICollection<Transaction> Transactions { get; set; }
 
     }
 }
