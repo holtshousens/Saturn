@@ -39,61 +39,13 @@ namespace ConsoleApplication
                 {
                     string sourcefile = ConfigurationManager.AppSettings[sourceTag];
 
-                    using (var reader = new StreamReader(File.OpenRead(sourcefile)))
-                    {
-                        string header = reader.ReadLine();
-                        var fields = header.Split(',');
-
-                        while (!reader.EndOfStream)
-                        {
-                            var line = reader.ReadLine();
-                            fields = line.Split(',');
-
-                            var transaction = new Transaction
-                            {
-                                 TransactionDate = Convert.ToDateTime(fields[1]),
-                                 TransactionAmount = double.Parse(fields[3]),
-                                TransactionName = fields[5]
-                            };
-                            Console.WriteLine(transaction.TransactionDate);
-
-                            //var card = new Card
-                            //{
-
-                            //};
-
-                            var transactionGroup = new TransactionGroup
-                            {
-                                TransactionGroupName = fields[4]
-                            };
-
-                            var accountType = new AccountType
-                            {
-                                accountNumber = fields[2]
-                            };
-
-                            //var merchant = new Merchant
-                            //{
-                            //    MerchantId = 1,
-                            //    MerchantName = fields[4]
-                            //};
-
-                            // link foreign keys
-                            //transaction.CardId = card.CardId;
-
-                            // add all to context
-                            context.Transactions.Add(transaction);
-                            //context.Cards.Add(card);
-                            context.TransactionGroups.Add(transactionGroup);
-                            context.AccountTypes.Add(accountType);
-                            //context.Merchants.Add(merchant);
-
-                        }
-                    }
+                    buildContextFromFile(context, sourcefile);
                 }
                 else if (sourceTag == _creditCard)
                 {
-                    //throw new NotImplementedException();
+                    string sourcefile = ConfigurationManager.AppSettings[sourceTag];
+
+                    buildContextFromFile(context, sourcefile);
                 }
                 else
                 {
@@ -101,6 +53,62 @@ namespace ConsoleApplication
                 }
 
                 context.SaveChanges();
+            }
+        }
+
+        private static void buildContextFromFile(TransactionContext context, string sourcefile)
+        {
+            using (var reader = new StreamReader(File.OpenRead(sourcefile)))
+            {
+                string header = reader.ReadLine();
+                var fields = header.Split(',');
+
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    fields = line.Split(',');
+
+                    var transaction = new Transaction
+                    {
+                        TransactionDate = Convert.ToDateTime(fields[1]),
+                        TransactionAmount = double.Parse(fields[3]),
+                        TransactionName = fields[5],
+                        TransactionLoadDate = DateTime.Now
+                    };
+                    Console.WriteLine(transaction.TransactionDate);
+
+                    //var card = new Card
+                    //{
+
+                    //};
+
+                    var transactionGroup = new TransactionGroup
+                    {
+                        TransactionGroupName = fields[4]
+                    };
+
+                    var accountType = new AccountType
+                    {
+                        accountNumber = fields[2]
+                    };
+
+                    //var merchant = new Merchant
+                    //{
+                    //    MerchantId = 1,
+                    //    MerchantName = fields[4]
+                    //};
+
+                    // link foreign keys
+                    //transaction.CardId = card.CardId;
+
+                    // add all to context
+                    context.Transactions.Add(transaction);
+                    //context.Cards.Add(card);
+                    context.TransactionGroups.Add(transactionGroup);
+                    context.AccountTypes.Add(accountType);
+                    //context.Merchants.Add(merchant);
+
+                }
             }
         }
     }

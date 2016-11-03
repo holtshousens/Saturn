@@ -15,14 +15,6 @@ namespace Saturn.DAL.DataObjects
 
         public string TransactionGroupName { get; set; }
 
-        // Foreign Key
-        
-
-        //[InverseProperty("TransactionId")]
-        //[ForeignKey("TransactionId")]
-        //public virtual int? TransactionId { get; set; }
-        //public virtual Transaction TransactionsInGroup { get; set; }
-
         public virtual ICollection<Transaction> Transactions { get; set; }
     }
 }
