@@ -70,10 +70,10 @@ namespace ConsoleApplication
 
                     var transaction = new Transaction
                     {
-                        TransactionDate = Convert.ToDateTime(fields[1]),
-                        TransactionAmount = double.Parse(fields[3]),
+                        TransactionDate = fields[1],
+                        TransactionAmount = fields[3],
                         TransactionName = fields[5],
-                        TransactionLoadDate = DateTime.Now
+                        TransactionLoadDate = DateTime.Now.ToString()
                     };
                     Console.WriteLine(transaction.TransactionDate);
 
