@@ -1,10 +1,11 @@
-﻿using Saturn.DAL.DataContext;
+﻿using Microsoft.VisualBasic.FileIO;
+using Saturn.DAL.DataContext;
 using Saturn.DAL.DataObjects;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
-using System.Data;
+using System.Globalization;
 using System.IO;
-using System.Linq;
 
 namespace ConsoleApplication
 {
@@ -23,6 +24,13 @@ namespace ConsoleApplication
             loadData(_debitCard, connectionString);
 
             loadData(_creditCard, connectionString);
+
+            //testing new logic
+            List<InputFile> CSVFile = new List<InputFile>();
+
+            CSVFile = CSVFileToList(ConfigurationManager.AppSettings[_debitCard]);
+
+            // next need to use the list and populate the data objects
 
             Console.ReadKey();
         }
@@ -60,55 +68,100 @@ namespace ConsoleApplication
         {
             using (var reader = new StreamReader(File.OpenRead(sourcefile)))
             {
-                string header = reader.ReadLine();
-                var fields = header.Split(',');
+                string line = reader.ReadLine();
 
+                List<string> header = new List<string>();
+                List<string> row = new List<string>();
+
+                foreach (var field in line.Split(','))
+                {
+                    
+                    header.Add(field);
+                }
+                
                 while (!reader.EndOfStream)
                 {
-                    var line = reader.ReadLine();
-                    fields = line.Split(',');
+                    line = reader.ReadLine();
 
-                    var transaction = new Transaction
+                    foreach (var field in line.Split(','))
                     {
-                        TransactionDate = fields[1],
-                        TransactionAmount = fields[3],
-                        TransactionName = fields[5],
-                        TransactionLoadDate = DateTime.Now.ToString()
+                        row.Add(field);
+                    }
+
+                    string nowString = DateTime.Now.ToString("dd/MM/yyyy");
+                    DateTime now = DateTime.ParseExact(nowString, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+                    DateTime transactionDate = DateTime.ParseExact(row[1], "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    // issue is that there is a comma in a text field causing a break...
+                    Transaction transaction = new Transaction
+                    {
+
+                        TransactionDate = transactionDate,
+                        TransactionAmount = row[3],
+                        TransactionName = row[5],
+                        TransactionLoadDate = now
                     };
                     Console.WriteLine(transaction.TransactionDate);
 
-                    //var card = new Card
-                    //{
-
-                    //};
-
-                    var transactionGroup = new TransactionGroup
+                    TransactionGroup transactionGroup = new TransactionGroup
                     {
-                        TransactionGroupName = fields[4]
+                        TransactionGroupName = row[4]
                     };
 
-                    var accountType = new AccountType
+                    AccountType accountType = new AccountType
                     {
-                        accountNumber = fields[2]
+                        accountNumber = row[2]
                     };
 
-                    //var merchant = new Merchant
-                    //{
-                    //    MerchantId = 1,
-                    //    MerchantName = fields[4]
-                    //};
-
-                    // link foreign keys
-                    //transaction.CardId = card.CardId;
-
-                    // add all to context
                     context.Transactions.Add(transaction);
-                    //context.Cards.Add(card);
                     context.TransactionGroups.Add(transactionGroup);
                     context.AccountTypes.Add(accountType);
-                    //context.Merchants.Add(merchant);
 
                 }
+            }
+        }
+
+        private static List<InputFile> CSVFileToList(string CSVFile)
+        {
+            using (TextFieldParser parser = new TextFieldParser(CSVFile))
+            {
+                parser.TextFieldType = FieldType.Delimited;
+                parser.SetDelimiters(",");
+                parser.HasFieldsEnclosedInQuotes = true;
+
+                string[] fields;
+
+                var CSVList = new List<InputFile>();
+
+                fields = parser.ReadFields();
+                // handle header
+
+                while (!parser.EndOfData)
+                {
+                    fields = parser.ReadFields();
+
+                    //read in fields to variables
+                    DateTime transactionDate = Convert.ToDateTime(fields[0]);
+                    string transactionName = fields[1];
+                    string cardType = fields[2];
+                    string cardUser = fields[3];
+                    string transactionGroup = fields[4];
+                    double amountCr = String.IsNullOrEmpty(fields[5]) == true ? 0 : Convert.ToDouble(fields[5]);
+                    double amountDr = String.IsNullOrEmpty(fields[6]) == true ? 0 : Convert.ToDouble(fields[6]);
+
+                    CSVList.Add(new InputFile()
+                    {
+                        TransactionDate = transactionDate,
+                        TransactionName = transactionName,
+                        CardType = cardType,
+                        CardUser = cardUser,
+                        TransactionGroup = transactionGroup,
+                        AmountCr = amountCr,
+                        AmountDr = amountDr
+                    });
+                }
+
+                return CSVList;
             }
         }
     }

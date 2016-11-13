@@ -12,13 +12,13 @@ namespace Saturn.DAL.DataObjects
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TransactionId { get; set; }
 
-        public string TransactionDate { get; set; }
+        public DateTime TransactionDate { get; set; }
 
         public string TransactionAmount { get; set; }
 
         public string TransactionName { get; set; }
 
-        public string TransactionLoadDate { get; set; }
+        public DateTime TransactionLoadDate { get; set; }
 
     }
 }
