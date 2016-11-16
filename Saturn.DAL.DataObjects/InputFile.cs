@@ -11,5 +11,6 @@ namespace ConsoleApplication
         public string TransactionGroup { get; set; } 
         public double AmountCr { get; set; } 
         public double AmountDr { get; set; } 
+        public DateTime TransactionLoadDateTime { get; set; }
     }
 }

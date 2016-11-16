@@ -14,11 +14,11 @@ namespace Saturn.DAL.DataObjects
 
         public DateTime TransactionDate { get; set; }
 
-        public string TransactionAmount { get; set; }
+        public double TransactionAmount { get; set; }
 
         public string TransactionName { get; set; }
 
-        public DateTime TransactionLoadDate { get; set; }
+        public DateTime TransactionLoadDateTime { get; set; }
 
     }
 }

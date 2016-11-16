@@ -53,7 +53,9 @@ namespace ConsoleApplication
                 {
                     string sourcefile = ConfigurationManager.AppSettings[sourceTag];
 
-                    buildContextFromFile(context, sourcefile);
+                    List<InputFile> newList = new List<InputFile>();
+                    newList = CSVFileToList(sourcefile);
+                    distributeListToObjects(context, newList);
                 }
                 else
                 {
@@ -61,63 +63,6 @@ namespace ConsoleApplication
                 }
 
                 context.SaveChanges();
-            }
-        }
-
-        private static void buildContextFromFile(TransactionContext context, string sourcefile)
-        {
-            using (var reader = new StreamReader(File.OpenRead(sourcefile)))
-            {
-                string line = reader.ReadLine();
-
-                List<string> header = new List<string>();
-                List<string> row = new List<string>();
-
-                foreach (var field in line.Split(','))
-                {
-                    
-                    header.Add(field);
-                }
-                
-                while (!reader.EndOfStream)
-                {
-                    line = reader.ReadLine();
-
-                    foreach (var field in line.Split(','))
-                    {
-                        row.Add(field);
-                    }
-
-                    string nowString = DateTime.Now.ToString("dd/MM/yyyy");
-                    DateTime now = DateTime.ParseExact(nowString, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-
-                    DateTime transactionDate = DateTime.ParseExact(row[1], "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                    // issue is that there is a comma in a text field causing a break...
-                    Transaction transaction = new Transaction
-                    {
-
-                        TransactionDate = transactionDate,
-                        TransactionAmount = row[3],
-                        TransactionName = row[5],
-                        TransactionLoadDate = now
-                    };
-                    Console.WriteLine(transaction.TransactionDate);
-
-                    TransactionGroup transactionGroup = new TransactionGroup
-                    {
-                        TransactionGroupName = row[4]
-                    };
-
-                    AccountType accountType = new AccountType
-                    {
-                        accountNumber = row[2]
-                    };
-
-                    context.Transactions.Add(transaction);
-                    context.TransactionGroups.Add(transactionGroup);
-                    context.AccountTypes.Add(accountType);
-
-                }
             }
         }
 
@@ -131,10 +76,11 @@ namespace ConsoleApplication
 
                 string[] fields;
 
-                var CSVList = new List<InputFile>();
+                List<InputFile> CSVList = new List<InputFile>();
 
                 fields = parser.ReadFields();
                 // handle header
+                DateTime LoadDateTime = DateTime.Now;
 
                 while (!parser.EndOfData)
                 {
@@ -142,6 +88,7 @@ namespace ConsoleApplication
 
                     //read in fields to variables
                     DateTime transactionDate = Convert.ToDateTime(fields[0]);
+                    DateTime transactionLoadDate = LoadDateTime;
                     string transactionName = fields[1];
                     string cardType = fields[2];
                     string cardUser = fields[3];
@@ -162,6 +109,28 @@ namespace ConsoleApplication
                 }
 
                 return CSVList;
+            }
+        }
+
+        private void distributeListToObjects(TransactionContext context, List<InputFile> CSVList)
+        {
+            foreach (var item in CSVList)
+            {
+                Transaction transaction = new Transaction
+                {
+                    TransactionDate = item.TransactionDate,
+                    TransactionAmount = item.AmountCr + item.AmountDr,
+                    TransactionName = item.TransactionName,
+                    TransactionLoadDateTime = item.TransactionLoadDateTime
+                };
+
+                TransactionGroup transactionGroup = new TransactionGroup
+                {
+                    TransactionGroupName = item.TransactionGroup
+                };
+            
+                context.Transactions.Add(transaction);
+                context.TransactionGroups.Add(transactionGroup);
             }
         }
     }
