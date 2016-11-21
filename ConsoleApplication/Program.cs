@@ -26,7 +26,7 @@ namespace ConsoleApplication
             loadData(_creditCard, connectionString);
 
             //testing new logic
-            List<InputFile> CSVFile = new List<InputFile>();
+            List<InputFileCreditCard> CSVFile = new List<InputFileCreditCard>();
 
             CSVFile = CSVFileToList(ConfigurationManager.AppSettings[_debitCard]);
 
@@ -47,13 +47,15 @@ namespace ConsoleApplication
                 {
                     string sourcefile = ConfigurationManager.AppSettings[sourceTag];
 
-                    buildContextFromFile(context, sourcefile);
+                    List<InputFileDebitCard> newList = new List<InputFileDebitCard>();
+                    //newList = CSVFileToList(sourcefile);
+                    //distributeListToObjects(context, newList);
                 }
                 else if (sourceTag == _creditCard)
                 {
                     string sourcefile = ConfigurationManager.AppSettings[sourceTag];
 
-                    List<InputFile> newList = new List<InputFile>();
+                    List<InputFileCreditCard> newList = new List<InputFileCreditCard>();
                     newList = CSVFileToList(sourcefile);
                     distributeListToObjects(context, newList);
                 }
@@ -66,7 +68,7 @@ namespace ConsoleApplication
             }
         }
 
-        private static List<InputFile> CSVFileToList(string CSVFile)
+        private static List<InputFileCreditCard> CSVFileToList(string CSVFile)
         {
             using (TextFieldParser parser = new TextFieldParser(CSVFile))
             {
@@ -76,7 +78,7 @@ namespace ConsoleApplication
 
                 string[] fields;
 
-                List<InputFile> CSVList = new List<InputFile>();
+                List<InputFileCreditCard> CSVList = new List<InputFileCreditCard>();
 
                 fields = parser.ReadFields();
                 // handle header
@@ -96,7 +98,7 @@ namespace ConsoleApplication
                     double amountCr = String.IsNullOrEmpty(fields[5]) == true ? 0 : Convert.ToDouble(fields[5]);
                     double amountDr = String.IsNullOrEmpty(fields[6]) == true ? 0 : Convert.ToDouble(fields[6]);
 
-                    CSVList.Add(new InputFile()
+                    CSVList.Add(new InputFileCreditCard()
                     {
                         TransactionDate = transactionDate,
                         TransactionName = transactionName,
@@ -112,7 +114,7 @@ namespace ConsoleApplication
             }
         }
 
-        private void distributeListToObjects(TransactionContext context, List<InputFile> CSVList)
+        private static TransactionContext distributeListToObjects(TransactionContext context, List<InputFileCreditCard> CSVList)
         {
             foreach (var item in CSVList)
             {
@@ -132,6 +134,10 @@ namespace ConsoleApplication
                 context.Transactions.Add(transaction);
                 context.TransactionGroups.Add(transactionGroup);
             }
+
+            context.SaveChanges();
+
+            return context;
         }
     }
 }
