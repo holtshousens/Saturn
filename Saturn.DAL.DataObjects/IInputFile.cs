@@ -2,7 +2,7 @@
 
 namespace Saturn.DAL.DataObjects
 {
-    public interface IInputFile
+    interface IInputFile
     {
         DateTime TransactionDate { get; set; }
         string TransactionName { get; set; } 
