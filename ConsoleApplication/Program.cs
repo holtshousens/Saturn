@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 
-namespace Saturn.Program
+namespace Saturn.Application
 {
     public class Program
     {
