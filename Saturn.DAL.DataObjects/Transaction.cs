@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Saturn.Domain.Interface;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Saturn.Domain
 {
-    public class Transaction
+    public class Transaction : ITransaction
     {
         public Transaction() { }
 

@@ -1,11 +1,12 @@
 ﻿using Saturn.Domain.Enums;
+using Saturn.Domain.Interface;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Saturn.Domain
 {
-    public class Card
+    public class Card : ICard
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

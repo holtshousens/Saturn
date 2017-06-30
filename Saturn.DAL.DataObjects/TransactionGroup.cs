@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using Saturn.Domain.Inteface;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Saturn.Domain
 {
-    public class TransactionGroup
+    public class TransactionGroup : ITransactionGroup
     {
         public TransactionGroup() { }
         
