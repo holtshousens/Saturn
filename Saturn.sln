@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn.DAL.DataContext", "Saturn.DAL.DataContext\Saturn.DAL.DataContext.csproj", "{CE0EFA1B-8B29-4131-AA5E-E8FB5B899AAE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn.Infrastructure", "Saturn.DAL.DataContext\Saturn.Infrastructure.csproj", "{CE0EFA1B-8B29-4131-AA5E-E8FB5B899AAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn.DAL.DataObjects", "Saturn.DAL.DataObjects\Saturn.DAL.DataObjects.csproj", "{9050C47F-8E69-4658-AAFA-A7DBDBE1FF7B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn.Domain", "Saturn.DAL.DataObjects\Saturn.Domain.csproj", "{9050C47F-8E69-4658-AAFA-A7DBDBE1FF7B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication", "ConsoleApplication\ConsoleApplication.csproj", "{268A0002-E7D0-4F39-915E-257A9EF54CE8}"
 EndProject

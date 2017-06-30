@@ -1,4 +1,4 @@
-﻿namespace Saturn.DAL.DataObjects.Enums
+﻿namespace Saturn.Domain.Enums
 {
     public enum CardTypeEnum
     {

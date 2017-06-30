@@ -62,13 +62,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Saturn.DAL.DataContext\Saturn.DAL.DataContext.csproj">
+    <ProjectReference Include="..\Saturn.DAL.DataContext\Saturn.Infrastructure.csproj">
       <Project>{CE0EFA1B-8B29-4131-AA5E-E8FB5B899AAE}</Project>
-      <Name>Saturn.DAL.DataContext</Name>
+      <Name>Saturn.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Saturn.DAL.DataObjects\Saturn.DAL.DataObjects.csproj">
+    <ProjectReference Include="..\Saturn.DAL.DataObjects\Saturn.Domain.csproj">
       <Project>{9050c47f-8e69-4658-aafa-a7dbdbe1ff7b}</Project>
-      <Name>Saturn.DAL.DataObjects</Name>
+      <Name>Saturn.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Saturn.DAL.DataObjects
+namespace Saturn.Domain
 {
     public class Transaction
     {

@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Saturn.Domain.Interface;
+using System;
 
-namespace Saturn.DAL.DataObjects
+namespace Saturn.Domain
 {
     public class InputFileDebitCard : IInputFile
     {

@@ -1,8 +1,7 @@
-﻿
-using Saturn.DAL.DataObjects;
+﻿using Saturn.Domain;
 using System.Data.Entity;
 
-namespace Saturn.DAL.DataContext
+namespace Saturn.Infrastructure
 {
     public class TransactionContext: DbContext
     {
