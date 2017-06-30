@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn.Program", "ConsoleAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn.Infrastructure.UnitTests", "Saturn.Infrastructure.UnitTests\Saturn.Infrastructure.UnitTests.csproj", "{F76FFC1E-DCAA-4E09-9401-2113C821EB4B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saturn.Domain.UnitTests", "Saturn.Domain.UnitTests\Saturn.Domain.UnitTests.csproj", "{3290E8BD-A6BE-4435-A853-7AECD1D2119C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{F76FFC1E-DCAA-4E09-9401-2113C821EB4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F76FFC1E-DCAA-4E09-9401-2113C821EB4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F76FFC1E-DCAA-4E09-9401-2113C821EB4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3290E8BD-A6BE-4435-A853-7AECD1D2119C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3290E8BD-A6BE-4435-A853-7AECD1D2119C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3290E8BD-A6BE-4435-A853-7AECD1D2119C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3290E8BD-A6BE-4435-A853-7AECD1D2119C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
