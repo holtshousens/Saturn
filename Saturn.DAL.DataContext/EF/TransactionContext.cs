@@ -1,7 +1,7 @@
 ﻿using Saturn.Domain;
 using System.Data.Entity;
 
-namespace Saturn.Infrastructure
+namespace Saturn.Infrastructure.EF
 {
     public class TransactionContext: DbContext
     {

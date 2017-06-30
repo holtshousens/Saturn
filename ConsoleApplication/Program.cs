@@ -1,11 +1,11 @@
 ﻿using Microsoft.VisualBasic.FileIO;
 using Saturn.Domain;
-using Saturn.Infrastructure;
+using Saturn.Infrastructure.EF;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 
-namespace ConsoleApplication
+namespace Saturn.Program
 {
     public class Program
     {

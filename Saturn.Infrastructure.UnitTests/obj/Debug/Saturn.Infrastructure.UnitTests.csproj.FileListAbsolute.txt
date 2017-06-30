@@ -1,0 +1,8 @@
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Infrastructure.UnitTests\bin\Debug\Saturn.Infrastructure.UnitTests.dll
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Infrastructure.UnitTests\bin\Debug\Saturn.Infrastructure.UnitTests.pdb
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Infrastructure.UnitTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Infrastructure.UnitTests\bin\Debug\nunit.framework.dll
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Infrastructure.UnitTests\bin\Debug\nunit.framework.xml
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Infrastructure.UnitTests\obj\Debug\Saturn.Infrastructure.UnitTests.csprojResolveAssemblyReference.cache
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Infrastructure.UnitTests\obj\Debug\Saturn.Infrastructure.UnitTests.dll
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Infrastructure.UnitTests\obj\Debug\Saturn.Infrastructure.UnitTests.pdb
