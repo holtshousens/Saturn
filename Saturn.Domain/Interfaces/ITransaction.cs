@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Saturn.Domain.Interface
+namespace Saturn.Domain.Interfaces
 {
     public interface ITransaction
     {

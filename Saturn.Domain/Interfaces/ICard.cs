@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Saturn.Domain.Enums;
 
-namespace Saturn.Domain.Interface
+namespace Saturn.Domain.Interfaces
 {
     public interface ICard
     {

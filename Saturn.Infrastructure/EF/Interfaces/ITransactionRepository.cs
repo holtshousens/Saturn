@@ -1,7 +1,7 @@
-﻿using Saturn.Domain;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Saturn.Domain;
 
-namespace Saturn.Infrastructure.EF.Interface
+namespace Saturn.Infrastructure.EF.Interfaces
 {
     public interface ITransactionRepository : IRepository<Transaction>
     {

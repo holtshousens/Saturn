@@ -51,9 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EF\Interface\ITransactionContext.cs" />
-    <Compile Include="EF\Interface\IRepository.cs" />
-    <Compile Include="EF\Interface\ITransactionRepository.cs" />
+    <Compile Include="EF\Interfaces\ITransactionContext.cs" />
+    <Compile Include="EF\Interfaces\IRepository.cs" />
+    <Compile Include="EF\Interfaces\ITransactionRepository.cs" />
     <Compile Include="EF\Repositories\Repository.cs" />
     <Compile Include="EF\Repositories\TransactionRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

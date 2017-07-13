@@ -1,6 +1,6 @@
 ﻿using Saturn.Domain;
-using Saturn.Infrastructure.EF.Interface;
 using System.Data.Entity;
+using Saturn.Infrastructure.EF.Interfaces;
 
 namespace Saturn.Infrastructure.EF
 {

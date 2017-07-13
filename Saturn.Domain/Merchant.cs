@@ -1,5 +1,5 @@
-﻿using Saturn.Domain.Interface;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Saturn.Domain.Interfaces;
 
 namespace Saturn.Domain
 {

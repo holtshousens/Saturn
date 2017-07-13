@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace Saturn.Infrastructure.EF.Interface
+namespace Saturn.Infrastructure.EF.Interfaces
 {
     public interface IRepository<TEntity> where TEntity : class
     {

@@ -1,5 +1,5 @@
-﻿using Saturn.Domain.Interface;
-using System;
+﻿using System;
+using Saturn.Domain.Interfaces;
 
 namespace Saturn.Domain
 {

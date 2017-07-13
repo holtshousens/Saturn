@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
 using Saturn.Domain;
 
-namespace Saturn.Infrastructure.EF.Interface
+namespace Saturn.Infrastructure.EF.Interfaces
 {
     public interface ITransactionContext
     {

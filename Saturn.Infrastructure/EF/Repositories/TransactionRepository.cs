@@ -1,7 +1,7 @@
 ﻿using Saturn.Domain;
-using Saturn.Infrastructure.EF.Interface;
 using System;
 using System.Collections.Generic;
+using Saturn.Infrastructure.EF.Interfaces;
 
 namespace Saturn.Infrastructure.EF.Repositories
 {

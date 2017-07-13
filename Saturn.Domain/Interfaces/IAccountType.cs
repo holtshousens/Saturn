@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Saturn.Domain.Interface
+namespace Saturn.Domain.Interfaces
 {
     public interface IAccountType
     {
