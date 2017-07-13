@@ -2,8 +2,8 @@
 {
     public enum CardTypeEnum
     {
-        visa,
-        mastercard,
-        amex
+        Visa,
+        Mastercard,
+        Amex
     }
 }

@@ -4,10 +4,10 @@ namespace Saturn.Domain.Interface
 {
     public interface IAccountType
     {
-        string accountNumber { get; set; }
-        string accountType { get; set; }
+        string AccountNumber { get; set; }
+        string AccountTypeDescription { get; set; }
         int AccountTypeId { get; set; }
-        string sortCode { get; set; }
+        string SortCode { get; set; }
         ICollection<Transaction> Transactions { get; set; }
     }
 }

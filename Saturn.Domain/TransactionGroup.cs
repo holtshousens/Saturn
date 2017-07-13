@@ -1,21 +1,12 @@
-﻿using Saturn.Domain.Inteface;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections.Generic;
+using Saturn.Domain.Interface;
 
 namespace Saturn.Domain
 {
     public class TransactionGroup : ITransactionGroup
     {
-        public TransactionGroup() { }
-        
-        // Primary Key
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TransactionGroupId { get; set; }
-
         public string TransactionGroupName { get; set; }
-
         public virtual ICollection<Transaction> Transactions { get; set; }
     }
 }

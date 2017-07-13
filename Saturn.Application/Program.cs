@@ -9,31 +9,31 @@ namespace Saturn.Application
 {
     public class Program
     {
-        private const string _debitCard = "DebitCardSource";
-        private const string _creditCard = "CreditCardSource";
-        private const string _connectionString = "TransactionsDB";
+        private const string DebitCard = "DebitCardSource";
+        private const string CreditCard = "CreditCardSource";
+        private const string ConnectionString = "TransactionsDB";
 
-        public static string connectionString;
+        private static string _connectionString;
 
         public static void Main(string[] args)
         {
-            connectionString = ConfigurationManager.ConnectionStrings[_connectionString].ConnectionString;
+            _connectionString = ConfigurationManager.ConnectionStrings[ConnectionString].ConnectionString;
 
-            loadData(_debitCard, connectionString);
+            LoadData(DebitCard, _connectionString);
 
-            loadData(_creditCard, connectionString);
+            LoadData(CreditCard, _connectionString);
 
             //testing new logic
-            List<InputFileCreditCard> CSVFile = new List<InputFileCreditCard>();
+            var csvFile = new List<InputFileCreditCard>();
 
-            CSVFile = CSVFileToList(ConfigurationManager.AppSettings[_debitCard]);
+            csvFile = CsvFileToList(ConfigurationManager.AppSettings[DebitCard]);
 
             // next need to use the list and populate the data objects
 
             Console.ReadKey();
         }
 
-        public static void loadData(string sourceTag, string connectionString)
+        public static void LoadData(string sourceTag, string connectionString)
         {
             using (var context = new TransactionContext())
             {
@@ -41,62 +41,64 @@ namespace Saturn.Application
 
                 context.Database.Log = Console.WriteLine;
 
-                if (sourceTag == _debitCard)
+                switch (sourceTag)
                 {
-                    string sourcefile = ConfigurationManager.AppSettings[sourceTag];
+                    case DebitCard:
+                    {
+                        var sourcefile = ConfigurationManager.AppSettings[sourceTag];
 
-                    List<InputFileDebitCard> newList = new List<InputFileDebitCard>();
-                    //newList = CSVFileToList(sourcefile);
-                    //distributeListToObjects(context, newList);
-                }
-                else if (sourceTag == _creditCard)
-                {
-                    string sourcefile = ConfigurationManager.AppSettings[sourceTag];
+                        var newList = new List<InputFileDebitCard>();
+                        //newList = CSVFileToList(sourcefile);
+                        //distributeListToObjects(context, newList);
+                    }
+                        break;
+                    case CreditCard:
+                    {
+                        var sourcefile = ConfigurationManager.AppSettings[sourceTag];
 
-                    List<InputFileCreditCard> newList = new List<InputFileCreditCard>();
-                    newList = CSVFileToList(sourcefile);
-                    distributeListToObjects(context, newList);
-                }
-                else
-                {
-                    throw new NotImplementedException();
+                        var newList = CsvFileToList(sourcefile);
+                        DistributeListToObjects(context, newList);
+                    }
+                        break;
+                    default:
+                        throw new NotImplementedException();
                 }
 
                 context.SaveChanges();
             }
         }
 
-        private static List<InputFileCreditCard> CSVFileToList(string CSVFile)
+        private static List<InputFileCreditCard> CsvFileToList(string csvFile)
         {
-            using (TextFieldParser parser = new TextFieldParser(CSVFile))
+            using (var parser = new TextFieldParser(csvFile))
             {
                 parser.TextFieldType = FieldType.Delimited;
                 parser.SetDelimiters(",");
                 parser.HasFieldsEnclosedInQuotes = true;
 
-                string[] fields;
+                var csvList = new List<InputFileCreditCard>();
 
-                List<InputFileCreditCard> CSVList = new List<InputFileCreditCard>();
-
-                fields = parser.ReadFields();
+                var fields = parser.ReadFields();
+                if (fields == null) throw new ArgumentNullException(nameof(fields));
                 // handle header
-                DateTime LoadDateTime = DateTime.Now;
+                var loadDateTime = DateTime.Now;
 
                 while (!parser.EndOfData)
                 {
                     fields = parser.ReadFields();
 
                     //read in fields to variables
-                    DateTime transactionDate = Convert.ToDateTime(fields[0]);
-                    DateTime transactionLoadDate = LoadDateTime;
-                    string transactionName = fields[1];
-                    string cardType = fields[2];
-                    string cardUser = fields[3];
-                    string transactionGroup = fields[4];
-                    double amountCr = String.IsNullOrEmpty(fields[5]) == true ? 0 : Convert.ToDouble(fields[5]);
-                    double amountDr = String.IsNullOrEmpty(fields[6]) == true ? 0 : Convert.ToDouble(fields[6]);
+                    if (fields == null) continue;
+                    var transactionDate = Convert.ToDateTime(fields[0]);
+                    var transactionLoadDate = loadDateTime;
+                    var transactionName = fields[1];
+                    var cardType = fields[2];
+                    var cardUser = fields[3];
+                    var transactionGroup = fields[4];
+                    var amountCr = string.IsNullOrEmpty(fields[5]) == true ? 0 : Convert.ToDouble(fields[5]);
+                    var amountDr = string.IsNullOrEmpty(fields[6]) == true ? 0 : Convert.ToDouble(fields[6]);
 
-                    CSVList.Add(new InputFileCreditCard()
+                    csvList.Add(new InputFileCreditCard()
                     {
                         TransactionDate = transactionDate,
                         TransactionName = transactionName,
@@ -108,15 +110,15 @@ namespace Saturn.Application
                     });
                 }
 
-                return CSVList;
+                return csvList;
             }
         }
 
-        private static TransactionContext distributeListToObjects(TransactionContext context, List<InputFileCreditCard> CSVList)
+        private static TransactionContext DistributeListToObjects(TransactionContext context, IEnumerable<InputFileCreditCard> csvList)
         {
-            foreach (var item in CSVList)
+            foreach (var item in csvList)
             {
-                Transaction transaction = new Transaction
+                var transaction = new Transaction
                 {
                     TransactionDate = item.TransactionDate,
                     TransactionAmount = item.AmountCr + item.AmountDr,
@@ -124,7 +126,7 @@ namespace Saturn.Application
                     TransactionLoadDateTime = item.TransactionLoadDateTime
                 };
 
-                TransactionGroup transactionGroup = new TransactionGroup
+                var transactionGroup = new TransactionGroup
                 {
                     TransactionGroupName = item.TransactionGroup
                 };

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Saturn.Domain.Inteface
+namespace Saturn.Domain.Interface
 {
     public interface ITransactionGroup
     {

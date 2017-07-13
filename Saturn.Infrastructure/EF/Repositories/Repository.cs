@@ -9,46 +9,46 @@ namespace Saturn.Infrastructure.EF.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        protected readonly DbContext context;
+        protected readonly DbContext Context;
 
         public Repository(DbContext context)
         {
-            this.context = context;
+            Context = context;
         }
 
         public void Add(TEntity entity)
         {
-            context.Set<TEntity>().Add(entity);
+            Context.Set<TEntity>().Add(entity);
         }
 
         public void AddRange(IEnumerable<TEntity> entities)
         {
-            context.Set<TEntity>().AddRange(entities);
+            Context.Set<TEntity>().AddRange(entities);
         }
 
         public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {
-            return context.Set<TEntity>().Where(predicate);
+            return Context.Set<TEntity>().Where(predicate);
         }
 
         public TEntity Get(int id)
         {
-            return context.Set<TEntity>().Find(id);
+            return Context.Set<TEntity>().Find(id);
         }
 
         public IEnumerable<TEntity> GetAll()
         {
-            return context.Set<TEntity>().ToList();
+            return Context.Set<TEntity>().ToList();
         }
 
         public void Remove(TEntity entity)
         {
-            context.Set<TEntity>().Remove(entity);
+            Context.Set<TEntity>().Remove(entity);
         }
 
         public void RemoveRange(IEnumerable<TEntity> entities)
         {
-            context.Set<TEntity>().RemoveRange(entities);
+            Context.Set<TEntity>().RemoveRange(entities);
         }
     }
 }

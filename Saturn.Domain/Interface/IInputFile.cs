@@ -2,7 +2,7 @@
 
 namespace Saturn.Domain.Interface
 {
-    interface IInputFile
+    internal interface IInputFile
     {
         DateTime TransactionDate { get; set; }
         string TransactionName { get; set; } 
