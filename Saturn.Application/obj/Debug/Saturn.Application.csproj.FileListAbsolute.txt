@@ -1,0 +1,14 @@
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Application\bin\Debug\Saturn.Application.exe.config
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Application\obj\Debug\Saturn.Application.csprojResolveAssemblyReference.cache
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Application\bin\Debug\Saturn.Application.exe
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Application\bin\Debug\Saturn.Application.pdb
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Application\bin\Debug\EntityFramework.dll
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Application\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Application\bin\Debug\Saturn.Domain.dll
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Application\bin\Debug\Saturn.Infrastructure.dll
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Application\bin\Debug\Saturn.Domain.pdb
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Application\bin\Debug\Saturn.Infrastructure.pdb
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Application\bin\Debug\EntityFramework.xml
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Application\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Application\obj\Debug\Saturn.Application.exe
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Application\obj\Debug\Saturn.Application.pdb

@@ -1,0 +1,6 @@
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Domain\bin\Debug\Saturn.Domain.dll.config
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Domain\bin\Debug\Saturn.Domain.dll
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Domain\bin\Debug\Saturn.Domain.pdb
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Domain\obj\Debug\Saturn.Domain.csprojResolveAssemblyReference.cache
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Domain\obj\Debug\Saturn.Domain.dll
+C:\Users\Sean\Source\Repos\Saturn\Saturn.Domain\obj\Debug\Saturn.Domain.pdb
