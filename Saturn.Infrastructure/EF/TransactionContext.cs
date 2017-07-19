@@ -4,7 +4,7 @@ using Saturn.Infrastructure.EF.Interfaces;
 
 namespace Saturn.Infrastructure.EF
 {
-    public class TransactionContext : DbContext, ITransactionContext
+    public sealed class TransactionContext : DbContext, ITransactionContext
     {
         public TransactionContext() 
             : base("name=TransactionContext")
@@ -13,10 +13,10 @@ namespace Saturn.Infrastructure.EF
             this.Configuration.LazyLoadingEnabled = false;
         }
 
-        public virtual DbSet<Transaction> Transactions {get; set; }
-        public virtual DbSet<Merchant> Merchants { get; set; }
-        public virtual DbSet<TransactionGroup> TransactionGroups { get; set; }
-        public virtual DbSet<AccountType> AccountTypes { get; set; }
-        public virtual DbSet<Card> Cards { get; set; }
+        public DbSet<Transaction> Transactions {get; set; }
+        public DbSet<Merchant> Merchants { get; set; }
+        public DbSet<TransactionGroup> TransactionGroups { get; set; }
+        public DbSet<AccountType> AccountTypes { get; set; }
+        public DbSet<Card> Cards { get; set; }
     }
 }

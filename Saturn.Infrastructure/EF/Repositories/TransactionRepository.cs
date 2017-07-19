@@ -22,7 +22,7 @@ namespace Saturn.Infrastructure.EF.Repositories
 
         public IEnumerable<Transaction> GetTotalTransactionsForPeriod(string period)
         {
-            throw new NotImplementedException();
+            yield return _context.Transactions.Find(period);
         }
     }
 }

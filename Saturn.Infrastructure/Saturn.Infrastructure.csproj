@@ -54,8 +54,10 @@
     <Compile Include="EF\Interfaces\ITransactionContext.cs" />
     <Compile Include="EF\Interfaces\IRepository.cs" />
     <Compile Include="EF\Interfaces\ITransactionRepository.cs" />
+    <Compile Include="EF\Interfaces\IUnitOfWork.cs" />
     <Compile Include="EF\Repositories\Repository.cs" />
     <Compile Include="EF\Repositories\TransactionRepository.cs" />
+    <Compile Include="EF\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EF\TransactionContext.cs" />
   </ItemGroup>
