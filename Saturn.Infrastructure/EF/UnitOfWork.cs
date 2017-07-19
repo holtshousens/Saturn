@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using Saturn.Domain;
 using Saturn.Infrastructure.EF.Interfaces;
 using Saturn.Infrastructure.EF.Repositories;
@@ -17,45 +16,25 @@ namespace Saturn.Infrastructure.EF
 
         public TransactionRepository TransactionRepository
         {
-            get
-            {
-                if(this._transactionRepository == null)
-                    this._transactionRepository = new TransactionRepository(_context);
-                return _transactionRepository;
-            }
+            get { return _transactionRepository ?? (_transactionRepository = new TransactionRepository(_context)); }
             set { }
         }
 
         public Repository<Card> CardRepository
         {
-            get
-            {
-                if (this._cardRepository == null)
-                    this._cardRepository = new Repository<Card>(_context);
-                return _cardRepository;
-            }
+            get { return _cardRepository ?? (_cardRepository = new Repository<Card>(_context)); }
             set { }
         }
 
         public Repository<AccountType> AccountTypeRepository
         {
-            get
-            {
-                if (this._accountTypeRepository == null)
-                    this._accountTypeRepository = new Repository<AccountType>(_context);
-                return _accountTypeRepository;
-            }
+            get { return _accountTypeRepository ?? (_accountTypeRepository = new Repository<AccountType>(_context)); }
             set { }
         }
 
         public Repository<Merchant> MerchantRepository
         {
-            get
-            {
-                if (this._merchantRepository == null)
-                    this._merchantRepository = new Repository<Merchant>(_context);
-                return _merchantRepository;
-            }
+            get { return _merchantRepository ?? (_merchantRepository = new Repository<Merchant>(_context)); }
             set { }
         }
 
@@ -63,9 +42,8 @@ namespace Saturn.Infrastructure.EF
         {
             get
             {
-                if (this._transactionGroupRepository == null)
-                    this._transactionGroupRepository = new Repository<TransactionGroup>(_context);
-                return _transactionGroupRepository;
+                return _transactionGroupRepository ?? (_transactionGroupRepository =
+                           new Repository<TransactionGroup>(_context));
             }
             set { }
         }
@@ -79,7 +57,7 @@ namespace Saturn.Infrastructure.EF
 
         protected virtual void Dispose(bool disposing)
         {
-            if (this.disposed) return;
+            if (disposed) return;
             if (disposing)
             {
                 _context.Dispose();
